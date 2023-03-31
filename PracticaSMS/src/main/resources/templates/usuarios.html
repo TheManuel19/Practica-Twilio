@@ -1,0 +1,58 @@
+<html>
+
+<head>
+
+    <title>Practica SMS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link th:href="@{/css/myStyles.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<div>
+    <h1>
+        Lista de Usuarios:
+        <button type="button" class="btn btn-primary btnRegistrarEnlace" onclick="location.href='/usuarios/register'">Añadir Usuario</button>
+    </h1>
+    <br>
+
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Nombre:</th>
+            <th scope="col">Apellido:</th>
+            <th scope="col">Edad:</th>
+            <th scope="col">Correo:</th>
+            <th scope="col">Telefono:</th>
+            <th scope="col">Otras opciones:</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tmpUsuarios: ${listaUsuarios}">
+            <td th:text="${tmpUsuarios.nombre}">Nombre</td>
+            <td th:text="${tmpUsuarios.apellido}">Apellido</td>
+            <td th:text="${tmpUsuarios.edad}">edad</td>
+            <td th:text="${tmpUsuarios.Correo}">Correo</td>
+            <td th:text="${tmpUsuarios.telefono}">telefono</td>
+
+            <td>
+                <a class="btn btn-warning" th:href="@{/usuarios/update/{id} (id=${tmpUsuarios.id})}">Actualizar</a>
+                <a class="btn btn-danger" th:href="@{/usuarios/eliminar/{id} (id=${tmpUsuarios.id})}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+        integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/myFunctions.js}"></script>
+</body>
+
+</html>
